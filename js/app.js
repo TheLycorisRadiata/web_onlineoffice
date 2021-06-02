@@ -19,20 +19,15 @@ const form_contact_pro = document.getElementById('contact_pro');
 const form_contact_perso = document.getElementById('contact_perso');
 const div_contacts = document.getElementById('div_contacts');
 
-let nbr_contacts = 0;
 let contacts = [];
 let last_button;
 
 btn_add.addEventListener('click', function()
 {
-	if (nbr_contacts > 0)
-	{
-		p_no_contact.classList.add('hidden');
-	}
-	else
-	{
+	if (contacts.length == 0)
 		p_no_contact.classList.remove('hidden');
-	}
+	else
+		p_no_contact.classList.add('hidden');
 
 	input_lastname.classList.add('hidden');
 	input_firstname.classList.add('hidden');
@@ -61,15 +56,14 @@ btn_delete.addEventListener('click', function()
 {
 	form_new_contact.classList.add('hidden');
 
-	if (nbr_contacts > 0)
+	if (contacts.length > 0)
 	{
-		input_lastname.classList.remove('hidden');
-		input_firstname.classList.remove('hidden');
-
 		if (last_button == 'delete')
 		{
 			input_lastname.classList.add('hidden');
 			input_firstname.classList.add('hidden');
+			input_lastname.value = '';
+			input_firstname.value = '';
 			last_button = '';
 		}
 		else
@@ -87,7 +81,7 @@ btn_activate_deactivate.addEventListener('click', function()
 {
 	form_new_contact.classList.add('hidden');
 
-	if (nbr_contacts > 0)
+	if (contacts.length > 0)
 	{
 		input_lastname.classList.remove('hidden');
 		input_firstname.classList.remove('hidden');
@@ -96,6 +90,8 @@ btn_activate_deactivate.addEventListener('click', function()
 		{
 			input_lastname.classList.add('hidden');
 			input_firstname.classList.add('hidden');
+			input_lastname.value = '';
+			input_firstname.value = '';
 			last_button = '';
 		}
 		else
@@ -129,8 +125,8 @@ input_firstname.addEventListener('keyup', function(e)
 		{
 			document.getElementById(contacts[index].id).remove();
 			contacts.splice(index, 1);
-			--nbr_contacts;
-			if (nbr_contacts == 0)
+			manage_p_no_contact();
+			if (contacts.length == 0)
 			{
 				p_no_contact.classList.remove('hidden');
 			}
@@ -237,7 +233,6 @@ document.getElementById('btn_submit').addEventListener('click', function()
 		form_contact_pro.checked = true;
 		form_contact_perso.checked = false;
 		contacts.push(new_contact);
-		++nbr_contacts;
 		form_new_contact.classList.add('hidden');
 		display_contact(new_contact);
 		p_no_contact.classList.add('hidden');
