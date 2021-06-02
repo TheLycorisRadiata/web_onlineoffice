@@ -1,5 +1,3 @@
-/* The buttons "Show presentation" don't do a thing. */
-
 const div_main = document.createElement('div');
 const title = document.createElement('h1');
 const div_buttons = document.createElement('div');
@@ -123,6 +121,11 @@ function print_contact(contact)
 
 	if (contact.is_visible == false)
 		document.getElementById(contact.id).style.backgroundColor = '#9DA3A3';
+
+	document.getElementById('btn_' + contact.id).addEventListener('click', function()
+	{
+		contact.present_contact();
+	});
 }
 
 document.getElementById('btn_submit').addEventListener('click', function()
