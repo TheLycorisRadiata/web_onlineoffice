@@ -12,6 +12,49 @@
 			crossorigin="anonymous" referrerpolicy="no-referrer">
 	</head>
 	<body>
+		<div id="div_main">
+			<h1>Address Book</h1>
+
+			<div id="div_buttons">
+				<input id="btn_add" type="button" value="Add">
+				<input id="btn_delete" type="button" value="Delete">
+				<input id="btn_activate_deactivate" type="button" value="Activate/Deactivate">
+			</div>
+
+			<p id="p_no_contact">No contact</p>
+
+			<input id="input_lastname" type="text" placeholder="Enter the contact's last name" class="hidden">
+			<input id="input_firstname" type="text" placeholder="Enter the contact's first name" class="hidden">
+
+			<form class="hidden">
+				<input id="lastname" type="text" placeholder="Last name" required><br>
+				<input id="firstname" type="text" placeholder="First name" required><br>
+				<input id="email" type="email" placeholder="Email address" required><br>
+				<input id="phone" type="tel" placeholder="Phone number" required><br>
+
+				<span id="option_pro">
+					<input id="contact_pro" type="radio" name="type_of_contact" value="contact_pro" checked>
+					<label for="contact_pro">Professional contact</label>
+				</span>
+				<span> </span>
+				<span id="option_perso">
+					<input id="contact_perso" type="radio" name="type_of_contact" value="contact_perso">
+					<label for="contact_perso">Personal contact</label>
+				</span><br>
+
+				<img id="logo" src="./images/logo_linkedin.png" alt="LinkedIn logo">
+				<input id="link" type="url" placeholder="LinkedIn link" required><br>
+
+				<input id="status" type="checkbox" checked>
+				<label for="status">Status: Active</label><br>
+
+				<input type="button" id="btn_submit" value="Add contact">
+			</form>
+
+			<div id="div_contacts">
+			</div>
+		</div>
+
 		<script src="./js/Contact.js"></script>
 		<script src="./js/app.js"></script>
 	</body>
