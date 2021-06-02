@@ -3,3 +3,18 @@ body
 	background-color: #571945;
 }
 
+.hidden
+{
+	display: none;
+}
+
+.active
+{
+	background-color: initial;
+}
+
+.inactive
+{
+	background-color: #9DA3A3;
+}
+
