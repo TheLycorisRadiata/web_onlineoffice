@@ -1,61 +1,27 @@
-const div_main = document.createElement('div');
-const title = document.createElement('h1');
-const div_buttons = document.createElement('div');
-const btn_add = document.createElement('input');
-const btn_delete = document.createElement('input');
-const btn_activate_deactivate = document.createElement('input');
-const p_no_contact = document.createElement('p');
-const input_lastname = document.createElement('input');
-const input_firstname = document.createElement('input');
-const form_new_contact = document.createElement('form');
-const div_contacts = document.createElement('div');
+const div_main = document.getElementById('div_main');
+const title = document.querySelector('h1');
+const div_buttons = document.getElementById('div_buttons');
+const btn_add = document.getElementById('btn_add');
+const btn_delete = document.getElementById('btn_delete');
+const btn_activate_deactivate = document.getElementById('btn_activate_deactivate');
+const p_no_contact = document.getElementById('p_no_contact');
+const input_lastname = document.getElementById('input_lastname');
+const input_firstname = document.getElementById('input_firstname');
+const form_new_contact = document.querySelector('form');
+const form_lastname = document.getElementById('lastname');
+const form_firstname = document.getElementById('firstname');
+const form_email = document.getElementById('email');
+const form_phone = document.getElementById('phone');
+const form_logo = document.getElementById('logo'); 
+const form_link = document.getElementById('link');
+const form_status = document.getElementById('status');
+const form_contact_pro = document.getElementById('contact_pro');
+const form_contact_perso = document.getElementById('contact_perso');
+const div_contacts = document.getElementById('div_contacts');
 
 let nbr_contacts = 0;
 let contacts = [];
 let last_button;
-
-document.body.appendChild(div_main);
-div_main.appendChild(title);
-div_main.appendChild(div_buttons);
-div_buttons.appendChild(btn_add);
-div_buttons.appendChild(btn_delete);
-div_buttons.appendChild(btn_activate_deactivate);
-div_main.appendChild(p_no_contact);
-div_main.appendChild(input_lastname);
-div_main.appendChild(input_firstname);
-div_main.appendChild(form_new_contact);
-div_main.appendChild(div_contacts);
-
-title.innerText = 'Address Book'.toUpperCase();
-btn_add.setAttribute('type', 'button');
-btn_add.setAttribute('value', 'Add');
-btn_delete.setAttribute('type', 'button');
-btn_delete.setAttribute('value', 'Delete');
-btn_activate_deactivate.setAttribute('type', 'button');
-btn_activate_deactivate.setAttribute('value', 'Activate/Deactivate');
-p_no_contact.innerText = 'No contact';
-input_lastname.setAttribute('type', 'text');
-input_lastname.setAttribute('placeholder', 'Enter the contact\'s last name');
-input_lastname.classList.add('hidden');
-input_firstname.setAttribute('type', 'text');
-input_firstname.setAttribute('placeholder', 'Enter the contact\'s first name');
-input_firstname.classList.add('hidden');
-form_new_contact.insertAdjacentHTML('afterbegin', 
-	'<input type="text" id="lastname" placeholder="Last name" required><br>' + 
-	'<input type="text" id="firstname" placeholder="First name" required><br>' + 
-	'<input type="email" id="email" placeholder="Email address" required><br>' + 
-	'<input type="tel" id="phone" placeholder="Phone number" required><br>' + 
-	'<span id="option_pro"><input type="radio" name="type_of_contact" id="contact_pro" value="pro" checked>' + 
-	'<label for="contact_pro">Professional contact</label></span>' + 
-	' ' + 
-	'<span id="option_perso"><input type="radio" name="type_of_contact" id="contact_perso" value="perso">' + 
-	'<label for="contact_perso">Personal contact</label></span><br>' + 
-	'<img src="./images/logo_linkedin.png" alt="LinkedIn logo" id="logo">' + 
-	'<input type="url" id="link" placeholder="LinkedIn link" required><br>' + 
-	'<input type="checkbox" id="status" checked>' + 
-	'<label for="status">Status: Active</label><br>' + 
-	'<input type="button" id="btn_submit" value="Add contact">');
-form_new_contact.classList.add('hidden');
 
 btn_add.addEventListener('click', function()
 {
@@ -74,6 +40,14 @@ btn_add.addEventListener('click', function()
 	if (last_button == 'add')
 	{
 		form_new_contact.classList.add('hidden');
+		form_lastname.value = '';
+		form_firstname.value = '';
+		form_email.value = '';
+		form_phone.value = '';
+		form_link.value = '';
+		form_status.checked = true;
+		form_contact_pro.checked = true;
+		form_contact_perso.checked = false;
 		last_button = '';
 	}
 	else
@@ -105,6 +79,8 @@ btn_delete.addEventListener('click', function()
 			last_button = 'delete';
 		}
 	}
+	else
+		last_button = '';
 });
 
 btn_activate_deactivate.addEventListener('click', function()
@@ -129,6 +105,8 @@ btn_activate_deactivate.addEventListener('click', function()
 			last_button = 'activate_deactivate';
 		}
 	}
+	else
+		last_button = '';
 });
 
 input_firstname.addEventListener('keyup', function(e)
@@ -157,6 +135,7 @@ input_firstname.addEventListener('keyup', function(e)
 				p_no_contact.classList.remove('hidden');
 			}
 			alert('Contact deleted.');
+			last_button = '';
 		}
 		else if (last_button == 'activate_deactivate')
 		{
@@ -171,6 +150,7 @@ input_firstname.addEventListener('keyup', function(e)
 				document.getElementById(contacts[index].id).classList.add('inactive');
 				document.getElementById(contacts[index].id).classList.remove('active');
 			}
+			last_button = '';
 		}
 	}
 });
@@ -213,56 +193,49 @@ function display_contact(contact)
 
 document.getElementById('option_pro').addEventListener('click', function()
 {
-	document.getElementById('link').placeholder = 'LinkedIn link';
-	document.getElementById('logo').src = './images/logo_linkedin.png';
-	document.getElementById('logo').alt = 'LinkedIn logo';
+	form_link.placeholder = 'LinkedIn link';
+	form_logo.src = './images/logo_linkedin.png';
+	form_logo.alt = 'LinkedIn logo';
 });
 
 document.getElementById('option_perso').addEventListener('click', function()
 {
-	document.getElementById('link').placeholder = 'Facebook link';
-	document.getElementById('logo').src = './images/logo_facebook.png';
-	document.getElementById('logo').alt = 'Facebook logo';
+	form_link.placeholder = 'Facebook link';
+	form_logo.src = './images/logo_facebook.png';
+	form_logo.alt = 'Facebook logo';
 });
 
 document.getElementById('btn_submit').addEventListener('click', function()
 {
-	const field_lastname = document.getElementById('lastname');
-	const field_firstname = document.getElementById('firstname');
-	const field_email = document.getElementById('email');
-	const field_phone = document.getElementById('phone');
-	const field_link = document.getElementById('link');
-	const field_status = document.getElementById('status');
-
-	const lastname = field_lastname.value;
-	const firstname = field_firstname.value;
-	const id = field_lastname.value + field_firstname.value + Date.now();
-	const email = field_email.value;
-	const phone = field_phone.value;
-	const is_active = field_status.checked;
-	const link = field_link.value;
+	const lastname = form_lastname.value;
+	const firstname = form_firstname.value;
+	const id = 'ID' + Date.now();
+	const email = form_email.value;
+	const phone = form_phone.value;
+	const is_active = form_status.checked;
+	const link = form_link.value;
 
 	let new_contact;
 
-	let field_type_of_contact = document.getElementById('contact_pro');
-	if (field_type_of_contact.checked == false)
-		field_type_of_contact = document.getElementById('contact_perso');
+	let type_of_contact = form_contact_pro;
+	if (type_of_contact.checked == false)
+		type_of_contact = form_contact_perso;
 
-	if (field_lastname.value != '' && field_firstname.value != '' && field_email.value != '' && field_phone.value != '' && field_link.value != '')
+	if (form_lastname.value != '' && form_firstname.value != '' && form_email.value != '' && form_phone.value != '' && form_link.value != '')
 	{
-		if (field_type_of_contact.value == 'pro')
+		if (type_of_contact.value == 'contact_pro')
 			new_contact = new ContactPro(lastname, firstname, id, email, phone, is_active, link);
 		else
 			new_contact = new ContactPerso(lastname, firstname, id, email, phone, is_active, link);
 
-		field_lastname.value = '';
-		field_firstname.value = '';
-		field_email.value = '';
-		field_phone.value = '';
-		field_link.value = '';
-		field_status.checked = true;
-		document.getElementById('contact_pro').checked = true;
-		document.getElementById('contact_perso').checked = false;
+		form_lastname.value = '';
+		form_firstname.value = '';
+		form_email.value = '';
+		form_phone.value = '';
+		form_link.value = '';
+		form_status.checked = true;
+		form_contact_pro.checked = true;
+		form_contact_perso.checked = false;
 		contacts.push(new_contact);
 		++nbr_contacts;
 		form_new_contact.classList.add('hidden');
