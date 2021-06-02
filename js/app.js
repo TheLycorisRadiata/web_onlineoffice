@@ -12,7 +12,7 @@ const div_contacts = document.createElement('div');
 
 let nbr_contacts = 0;
 let contacts = [];
-let button;
+let last_button;
 
 document.body.appendChild(div_main);
 div_main.appendChild(title);
@@ -50,6 +50,7 @@ form_new_contact.insertAdjacentHTML('afterbegin',
 	' ' + 
 	'<span id="option_perso"><input type="radio" name="type_of_contact" id="contact_perso" value="perso">' + 
 	'<label for="contact_perso">Personal contact</label></span><br>' + 
+	'<img src="./images/logo_linkedin.png" alt="LinkedIn logo" id="logo">' + 
 	'<input type="url" id="link" placeholder="LinkedIn link" required><br>' + 
 	'<input type="checkbox" id="status" checked>' + 
 	'<label for="status">Status: Active</label><br>' + 
@@ -69,8 +70,17 @@ btn_add.addEventListener('click', function()
 
 	input_lastname.classList.add('hidden');
 	input_firstname.classList.add('hidden');
-	form_new_contact.classList.remove('hidden');
-	button = 'add';
+
+	if (last_button == 'add')
+	{
+		form_new_contact.classList.add('hidden');
+		last_button = '';
+	}
+	else
+	{
+		form_new_contact.classList.remove('hidden');
+		last_button = 'add';
+	}
 });
 
 btn_delete.addEventListener('click', function()
@@ -81,7 +91,19 @@ btn_delete.addEventListener('click', function()
 	{
 		input_lastname.classList.remove('hidden');
 		input_firstname.classList.remove('hidden');
-		button = 'delete';
+
+		if (last_button == 'delete')
+		{
+			input_lastname.classList.add('hidden');
+			input_firstname.classList.add('hidden');
+			last_button = '';
+		}
+		else
+		{
+			input_lastname.classList.remove('hidden');
+			input_firstname.classList.remove('hidden');
+			last_button = 'delete';
+		}
 	}
 });
 
@@ -93,7 +115,19 @@ btn_activate_deactivate.addEventListener('click', function()
 	{
 		input_lastname.classList.remove('hidden');
 		input_firstname.classList.remove('hidden');
-		button = 'activate_deactivate';
+	
+		if (last_button == 'activate_deactivate')
+		{
+			input_lastname.classList.add('hidden');
+			input_firstname.classList.add('hidden');
+			last_button = '';
+		}
+		else
+		{
+			input_lastname.classList.remove('hidden');
+			input_firstname.classList.remove('hidden');
+			last_button = 'activate_deactivate';
+		}
 	}
 });
 
@@ -113,7 +147,7 @@ input_firstname.addEventListener('keyup', function(e)
 		{
 			alert('Contact not found.');
 		}
-		else if (button == 'delete')
+		else if (last_button == 'delete')
 		{
 			document.getElementById(contacts[index].id).remove();
 			contacts.splice(index, 1);
@@ -124,7 +158,7 @@ input_firstname.addEventListener('keyup', function(e)
 			}
 			alert('Contact deleted.');
 		}
-		else if (button == 'activate_deactivate')
+		else if (last_button == 'activate_deactivate')
 		{
 			contacts[index].is_active == true ? contacts[index].is_active = false : contacts[index].is_active = true;
 			if (contacts[index].is_active == true)
@@ -145,21 +179,29 @@ function display_contact(contact)
 {
 	let html_code = '<div id="' + contact.id + '">' + 
 		'<ul>' + 
-		'<li class="lastname"></li>' + 
-		'<li class="firstname"></li>' + 
-		'<li class="email"></li>' + 
-		'<li class="phone"></li>' + 
-		'<li class="link"><a href="#" target="_blank">See online account</a></li>' + 
+		'<li><span class="fullname"></span></li>' + 
+		'<li><i class="fas fa-envelope"></i><span class="email"></span></li>' + 
+		'<li><i class="fas fa-phone-alt"></i><span class="phone"></span></li>' + 
+		'<li class="link"><img src="" alt=""><a href="#" target="_blank">See online account</a></li>' + 
 		'</ul>' + 
 		'<input type="button" value="Show presentation" id="btn_' + contact.id +'">' + 
 		'</div>';
 
 	div_contacts.insertAdjacentHTML('beforeend', html_code);
-	document.querySelector('#' + contact.id + ' .lastname').innerText = contact.lastname;
-	document.querySelector('#' + contact.id + ' .firstname').innerText = contact.firstname;
+	document.querySelector('#' + contact.id + ' .fullname').innerText = contact.lastname.toUpperCase() + ' ' + contact.firstname;
 	document.querySelector('#' + contact.id + ' .email').innerText = contact.email;
 	document.querySelector('#' + contact.id + ' .phone').innerText = contact.phone;
 	document.querySelector('#' + contact.id + ' .link a').href = contact.link;
+	if (contact instanceof ContactPro)
+	{
+		document.querySelector('#' + contact.id + ' .link img').src = './images/logo_linkedin.png';
+		document.querySelector('#' + contact.id + ' .link img').alt = 'LinkedIn logo';
+	}
+	else
+	{
+		document.querySelector('#' + contact.id + ' .link img').src = './images/logo_facebook.png';
+		document.querySelector('#' + contact.id + ' .link img').alt = 'Facebook logo';
+	}
 
 	contact.is_active ? document.getElementById(contact.id).classList.add('active') : document.getElementById(contact.id).classList.add('inactive');
 
@@ -172,11 +214,15 @@ function display_contact(contact)
 document.getElementById('option_pro').addEventListener('click', function()
 {
 	document.getElementById('link').placeholder = 'LinkedIn link';
+	document.getElementById('logo').src = './images/logo_linkedin.png';
+	document.getElementById('logo').alt = 'LinkedIn logo';
 });
 
 document.getElementById('option_perso').addEventListener('click', function()
 {
 	document.getElementById('link').placeholder = 'Facebook link';
+	document.getElementById('logo').src = './images/logo_facebook.png';
+	document.getElementById('logo').alt = 'Facebook logo';
 });
 
 document.getElementById('btn_submit').addEventListener('click', function()
@@ -222,6 +268,7 @@ document.getElementById('btn_submit').addEventListener('click', function()
 		form_new_contact.classList.add('hidden');
 		display_contact(new_contact);
 		p_no_contact.classList.add('hidden');
+		last_button = '';
 	}
 });
 
