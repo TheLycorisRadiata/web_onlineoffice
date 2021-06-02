@@ -3,6 +3,11 @@ body
 	background-color: #571945;
 }
 
+h1
+{
+	text-transform: uppercase;
+}
+
 ul
 {
 	list-style-type: none;
