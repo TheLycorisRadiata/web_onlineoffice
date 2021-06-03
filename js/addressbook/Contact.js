@@ -1,24 +1,30 @@
-function Contact(lastname, firstname, id, email, phone, is_active)
+class Contact
 {
-	this.lastname = lastname;
-	this.firstname = firstname;
-	this.id = id;
-	this.email = email;
-	this.phone = phone;
-	this.is_active = is_active;
+	constructor(lastname, firstname, id, email, phone, is_active)
+	{
+		this.lastname = lastname;
+		this.firstname = firstname;
+		this.id = id;
+		this.email = email;
+		this.phone = phone;
+		this.is_active = is_active;
+	}
 
-	this.present_contact = function()
+	present_contact()
 	{
 		alert(`Hello! My name is ${this.firstname} ${this.lastname}. You can contact me at ${this.email} or on ${this.phone}.`);
 	}
 }
 
-function ContactPro(lastname, firstname, id, email, phone, is_active, linkedin)
+class ContactPro extends Contact
 {
-	Contact.call(this, lastname, firstname, id, email, phone, is_active);
-	this.link = linkedin;
+	constructor(lastname, firstname, id, email, phone, is_active, linkedin)
+	{
+		super(lastname, firstname, id, email, phone, is_active);
+		this.link = linkedin;
+	}
 
-	this.present_contact = function()
+	present_contact()
 	{
 		const do_redirect = confirm(`Hello! My name is ${this.firstname} ${this.lastname}. You can contact me at ${this.email} or on ${this.phone}.` + 
 			`\r\n\r\n` + 
@@ -29,12 +35,15 @@ function ContactPro(lastname, firstname, id, email, phone, is_active, linkedin)
 	}
 }
 
-function ContactPerso(lastname, firstname, id, email, phone, is_active, facebook)
+class ContactPerso extends Contact
 {
-	Contact.call(this, lastname, firstname, id, email, phone, is_active);
-	this.link = facebook;
+	constructor(lastname, firstname, id, email, phone, is_active, facebook)
+	{
+		super(lastname, firstname, id, email, phone, is_active);
+		this.link = facebook;
+	}
 
-	this.present_contact = function()
+	present_contact()
 	{
 		const do_redirect = confirm(`Hello! My name is ${this.firstname} ${this.lastname}. You can contact me at ${this.email} or on ${this.phone}.` + 
 			`\r\n\r\n` + 
