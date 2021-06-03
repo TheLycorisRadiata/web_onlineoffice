@@ -1,11 +1,35 @@
 body
 {
-	background-color: #571945;
+	background-color: #4AC48A;
+	word-break: break-word;
+}
+
+body, input
+{
+	font-size: 1.2rem;
+	font-family: 'Lato', sans-serif;
+}
+
+input
+{
+	margin-right: 5px;
+	margin-bottom: 2px;
+}
+
+h1, h2
+{
+	text-transform: uppercase;
 }
 
 h1
 {
-	text-transform: uppercase;
+	font-size: 2rem;
+	text-align: center;
+}
+
+h2
+{
+	font-size: 1.7rem;
 }
 
 ul
@@ -14,11 +38,29 @@ ul
 	padding: 0px;
 }
 
+.div_module
+{
+	box-shadow: inset 0px 0px 10px black;
+}
+
 .hidden
 {
 	display: none;
 }
 
+/* STYLE MODULE ---------------------------------------------- */
+#p_style_color_text span, #p_style_color_background span, #p_style_color_ongoing span
+{
+	margin-left: 10px;
+}
+
+/* TODO LIST ------------------------------------------------- */
+#div_task_interaction
+{
+	margin-top: 15px;
+}
+
+/* ADDRESS BOOK ---------------------------------------------- */
 .active
 {
 	background-color: initial;
@@ -28,4 +70,7 @@ ul
 {
 	background-color: #9DA3A3;
 }
+
+/* GEOLOCATION ----------------------------------------------- */
+/* ... */
 

@@ -1,5 +1,3 @@
-const div_main = document.getElementById('div_main');
-const title = document.querySelector('h1');
 const div_buttons = document.getElementById('div_buttons');
 const btn_add = document.getElementById('btn_add');
 const btn_delete = document.getElementById('btn_delete');
@@ -43,6 +41,9 @@ btn_add.addEventListener('click', function()
 		form_status.checked = true;
 		form_contact_pro.checked = true;
 		form_contact_perso.checked = false;
+		form_link.placeholder = 'LinkedIn link';
+		form_logo.src = './images/logo_linkedin.png';
+		form_logo.alt = 'LinkedIn logo';
 		last_button = '';
 	}
 	else
@@ -125,13 +126,11 @@ input_firstname.addEventListener('keyup', function(e)
 		{
 			document.getElementById(contacts[index].id).remove();
 			contacts.splice(index, 1);
-			manage_p_no_contact();
 			if (contacts.length == 0)
 			{
 				p_no_contact.classList.remove('hidden');
 			}
 			alert('Contact deleted.');
-			last_button = '';
 		}
 		else if (last_button == 'activate_deactivate')
 		{
@@ -146,8 +145,9 @@ input_firstname.addEventListener('keyup', function(e)
 				document.getElementById(contacts[index].id).classList.add('inactive');
 				document.getElementById(contacts[index].id).classList.remove('active');
 			}
-			last_button = '';
 		}
+
+		last_button = '';
 	}
 });
 
@@ -160,7 +160,7 @@ function display_contact(contact)
 		'<li><i class="fas fa-phone-alt"></i><span class="phone"></span></li>' + 
 		'<li class="link"><img src="" alt=""><a href="#" target="_blank">See online account</a></li>' + 
 		'</ul>' + 
-		'<input type="button" value="Show presentation" id="btn_' + contact.id +'">' + 
+		'<input type="button" value="Show presentation" id="btn_' + contact.id +'" name="btn_' + contact.id + '">' + 
 		'</div>';
 
 	div_contacts.insertAdjacentHTML('beforeend', html_code);
@@ -232,6 +232,9 @@ document.getElementById('btn_submit').addEventListener('click', function()
 		form_status.checked = true;
 		form_contact_pro.checked = true;
 		form_contact_perso.checked = false;
+		form_link.placeholder = 'LinkedIn link';
+		form_logo.src = './images/logo_linkedin.png';
+		form_logo.alt = 'LinkedIn logo';
 		contacts.push(new_contact);
 		form_new_contact.classList.add('hidden');
 		display_contact(new_contact);
