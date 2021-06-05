@@ -158,7 +158,7 @@ function display_contact(contact)
 		'<li><span class="fullname"></span></li>' + 
 		'<li><i class="fas fa-envelope"></i><span class="email"></span></li>' + 
 		'<li><i class="fas fa-phone-alt"></i><span class="phone"></span></li>' + 
-		'<li class="link"><img src="" alt=""><a href="#" target="_blank">See online account</a></li>' + 
+		'<li class="link"><img src="" alt=""><a href="#" rel="ugc" target="_blank">See online account</a></li>' + 
 		'</ul>' + 
 		'<input type="button" value="Show presentation" id="btn_' + contact.id +'" name="btn_' + contact.id + '">' + 
 		'</div>';
