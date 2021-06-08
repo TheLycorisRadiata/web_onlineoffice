@@ -1,6 +1,7 @@
 body
 {
 	word-break: break-word;
+	margin-bottom: 20px;
 }
 
 body, input
@@ -24,6 +25,7 @@ h1
 {
 	font-size: 2rem;
 	text-align: center;
+	text-shadow: 4px 4px 5px white;
 }
 
 h2
@@ -38,6 +40,15 @@ ul
 	padding: 0px;
 }
 
+#main_wrapper
+{
+	width: 90%;
+	margin: auto;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+}
+
 .div_module
 {
 	box-shadow: inset 0px 0px 10px black;
@@ -48,6 +59,11 @@ ul
 .hidden
 {
 	display: none;
+}
+
+.div_module, input, #div_contacts div[id*="ID"]
+{
+	border-radius: 5px;
 }
 
 /* STYLE MODULE ---------------------------------------------- */
@@ -67,6 +83,16 @@ ul
 	margin-top: 15px;
 }
 
+#div_task_interaction_first input
+{
+}
+
+#div_task_interaction_second input
+{	
+	background-color: #000;
+	color: #FFF;
+}
+
 /* ADDRESS BOOK ---------------------------------------------- */
 .active
 {
@@ -81,6 +107,33 @@ ul
 #p_no_contact
 {
 	margin-bottom: 0;
+}
+
+#addressbook_form
+{
+	margin-top: 20px;
+}
+
+.logo
+{
+	width: 50px;
+	height: 50px;
+}
+
+.logo, .fas
+{
+	margin-right: 10px;
+}
+
+.contact_field
+{
+	margin-bottom: 5px;
+}
+
+#div_contacts div[id*="ID"]
+{
+	padding: 5px;
+	padding-top: 0;
 }
 
 /* GEOLOCATION ----------------------------------------------- */
