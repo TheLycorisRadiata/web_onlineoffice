@@ -1,6 +1,5 @@
 body
 {
-	background-color: #4AC48A;
 	word-break: break-word;
 }
 
@@ -30,6 +29,7 @@ h1
 h2
 {
 	font-size: 1.7rem;
+	margin-top: 0;
 }
 
 ul
@@ -41,6 +41,8 @@ ul
 .div_module
 {
 	box-shadow: inset 0px 0px 10px black;
+	margin: 10px;
+	padding: 10px;
 }
 
 .hidden
@@ -52,6 +54,11 @@ ul
 #p_style_color_text span, #p_style_color_background span, #p_style_color_ongoing span
 {
 	margin-left: 10px;
+}
+
+#p_style_color_text, #p_style_color_background, #p_style_color_ongoing
+{
+	margin-bottom: 0;
 }
 
 /* TODO LIST ------------------------------------------------- */
@@ -71,6 +78,14 @@ ul
 	background-color: #9DA3A3;
 }
 
+#p_no_contact
+{
+	margin-bottom: 0;
+}
+
 /* GEOLOCATION ----------------------------------------------- */
-/* ... */
+#div_geolocation_display ul
+{
+	margin-bottom: 0;
+}
 

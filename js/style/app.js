@@ -3,59 +3,83 @@ const btn_style_color_text = document.getElementById('btn_style_color_text');
 const btn_style_color_background = document.getElementById('btn_style_color_background');
 const btn_style_color_ongoing = document.getElementById('btn_style_color_ongoing');
 
-let color_text_default = '#000000';
-let color_text = color_text_default;
-let color_background_default = '#4AC48A';
-let color_background = color_background_default;
-let color_ongoing_default = '#0775AB';
-let color_ongoing = color_ongoing_default;
+const style_from_local_storage = JSON.parse(localStorage.getItem('style'));
 
-document.body.style.color = color_text;
-document.body.style.backgroundColor = color_background;
+const colors_default = 
+{
+	text: '#3C204C',
+	background: '#926DE8',
+	ongoing: '#7F0505'
+}
+
+const colors = style_from_local_storage != null ? style_from_local_storage : 
+{
+	text: colors_default.text,
+	background: colors_default.background,
+	ongoing: colors_default.ongoing
+};
+
+(function()
+{
+	document.body.style.color = colors.text;
+	document.body.style.backgroundColor = colors.background;
+
+	btn_style_color_text.value = colors.text;
+	btn_style_color_background.value = colors.background;
+	btn_style_color_ongoing.value = colors.ongoing;
+})();
 
 btn_style_color_default.addEventListener('click', function()
 {
 	const tasks_ongoing = document.getElementsByClassName('task_ongoing');
 
-	color_text = color_text_default;
-	color_background = color_background_default;
-	color_ongoing = color_ongoing_default;
+	colors.text = colors_default.text;
+	colors.background = colors_default.background;
+	colors.ongoing = colors_default.ongoing;
 
-	document.body.style.color = color_text;
-	document.body.style.backgroundColor = color_background;
+	document.body.style.color = colors.text;
+	document.body.style.backgroundColor = colors.background;
 
 	if (tasks_ongoing.length > 0)
 	{
 		for (let task of tasks_ongoing)
 		{
-			task.style.color = color_ongoing;
+			task.style.color = colors.ongoing;
 		}
 	}
+
+	localStorage.setItem('style', JSON.stringify(colors));
 });
 
 btn_style_color_text.addEventListener('click', function(e)
 {
-	color_text = e.target.value;
-	document.body.style.color = color_text;
+	colors.text = e.target.value;
+	document.body.style.color = colors.text;
+
+	localStorage.setItem('style', JSON.stringify(colors));
 });
 
 btn_style_color_background.addEventListener('click', function(e)
 {
-	color_background = e.target.value;
-	document.body.style.backgroundColor = color_background;
+	colors.background = e.target.value;
+	document.body.style.backgroundColor = colors.background;
+
+	localStorage.setItem('style', JSON.stringify(colors));
 });
 
 btn_style_color_ongoing.addEventListener('click', function(e)
 {
 	const tasks_ongoing = document.getElementsByClassName('task_ongoing');
-	color_ongoing = e.target.value;
+	colors.ongoing = e.target.value;
 
 	if (tasks_ongoing.length > 0)
 	{
 		for (let task of tasks_ongoing)
 		{
-			task.style.color = color_ongoing;
+			task.style.color = colors.ongoing;
 		}
 	}
+
+	localStorage.setItem('style', JSON.stringify(colors));
 });
 

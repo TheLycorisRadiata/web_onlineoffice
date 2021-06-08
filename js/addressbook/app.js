@@ -1,3 +1,8 @@
+/*
+	Update the local storage any time there's a change, even with the active/inactive switch.
+	Use the IIFE to update the Address Book module if contacts is not empty on arrival.
+*/
+
 const div_buttons = document.getElementById('div_buttons');
 const btn_add = document.getElementById('btn_add');
 const btn_delete = document.getElementById('btn_delete');
@@ -17,8 +22,15 @@ const form_contact_pro = document.getElementById('contact_pro');
 const form_contact_perso = document.getElementById('contact_perso');
 const div_contacts = document.getElementById('div_contacts');
 
-let contacts = [];
+const addressbook_from_local_storage = JSON.parse(localStorage.getItem('addressbook'));
+const contacts = addressbook_from_local_storage != null ? addressbook_from_local_storage : [];
+
 let last_button;
+
+(function()
+{
+	
+})();
 
 btn_add.addEventListener('click', function()
 {
