@@ -15,7 +15,7 @@ const form_lastname = document.getElementById('lastname');
 const form_firstname = document.getElementById('firstname');
 const form_email = document.getElementById('email');
 const form_phone = document.getElementById('phone');
-const form_logo = document.getElementById('logo'); 
+const form_logo = document.getElementById('form_logo'); 
 const form_link = document.getElementById('link');
 const form_status = document.getElementById('status');
 const form_contact_pro = document.getElementById('contact_pro');
@@ -167,10 +167,10 @@ function display_contact(contact)
 {
 	let html_code = '<div id="' + contact.id + '">' + 
 		'<ul>' + 
-		'<li><span class="fullname"></span></li>' + 
-		'<li><i class="fas fa-envelope"></i><span class="email"></span></li>' + 
-		'<li><i class="fas fa-phone-alt"></i><span class="phone"></span></li>' + 
-		'<li class="link"><img src="" alt=""><a href="#" rel="ugc" target="_blank">See online account</a></li>' + 
+		'<li class="contact_field"><span class="fullname"></span></li>' + 
+		'<li class="contact_field"><i class="fas fa-envelope"></i><span class="email"></span></li>' + 
+		'<li class="contact_field"><i class="fas fa-phone-alt"></i><span class="phone"></span></li>' + 
+		'<li class="contact_field link"><img class="logo" src="" alt=""><a href="#" rel="ugc" target="_blank">See online account</a></li>' + 
 		'</ul>' + 
 		'<input type="button" value="Show presentation" id="btn_' + contact.id +'" name="btn_' + contact.id + '">' + 
 		'</div>';

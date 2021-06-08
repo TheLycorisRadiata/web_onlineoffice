@@ -19,6 +19,9 @@ const tasks = todolist_from_local_storage != null ? todolist_from_local_storage 
 		div_task_interaction.classList.add('hidden');
 	else
 	{
+		input_number_task.max = tasks.length;
+		input_number_task_modify.max = tasks.length;
+
 		for (const task of tasks)
 		{
 			div_tasks.insertAdjacentHTML('beforeend', '<li id="' + task.id  + '">' + task.content + '</li>');
@@ -108,6 +111,7 @@ btn_task_complete.addEventListener('click', function()
 		task_element = document.getElementById(task.id);
 		task_element.style.color = 'initial';
 		task_element.style.textDecoration = 'line-through';
+
 		input_task.value = '';
 		input_number_task.value = '';
 		input_number_task_modify.value = '';
@@ -148,13 +152,14 @@ btn_task_delete.addEventListener('click', function()
 btn_task_modify.addEventListener('click', function()
 {
 	const new_text = input_task_modify.value;
-	const task = tasks[input_number_task.value - 1];
+	const task = tasks[input_number_task_modify.value - 1];
 	let task_element;
 
 	if (task != null && new_text != '')
 	{
 		task_element = document.getElementById(task.id);
 		task_element.innerText = new_text;
+
 		input_task.value = '';
 		input_number_task.value = '';
 		input_number_task_modify.value = '';
