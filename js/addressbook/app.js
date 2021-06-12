@@ -1,8 +1,3 @@
-/*
-	Update the local storage any time there's a change, even with the active/inactive switch.
-	Use the IIFE to update the Address Book module if contacts is not empty on arrival.
-*/
-
 const div_buttons = document.getElementById('div_buttons');
 const btn_add = document.getElementById('btn_add');
 const btn_delete = document.getElementById('btn_delete');
@@ -27,9 +22,52 @@ const contacts = addressbook_from_local_storage != null ? addressbook_from_local
 
 let last_button;
 
+function display_contact(contact)
+{
+	let html_code = '<div id="' + contact.id + '">' + 
+		'<ul>' + 
+		'<li class="contact_field"><span class="fullname"></span></li>' + 
+		'<li class="contact_field"><i class="fas fa-envelope"></i><span class="email"></span></li>' + 
+		'<li class="contact_field"><i class="fas fa-phone-alt"></i><span class="phone"></span></li>' + 
+		'<li class="contact_field link"><img class="logo" src="" alt=""><a href="#" rel="ugc" target="_blank">See online account</a></li>' + 
+		'</ul>' + 
+		'<input type="button" value="Show presentation" id="btn_' + contact.id +'" name="btn_' + contact.id + '">' + 
+		'</div>';
+
+	div_contacts.insertAdjacentHTML('beforeend', html_code);
+	document.querySelector('#' + contact.id + ' .fullname').innerText = contact.lastname.toUpperCase() + ' ' + contact.firstname;
+	document.querySelector('#' + contact.id + ' .email').innerText = contact.email;
+	document.querySelector('#' + contact.id + ' .phone').innerText = contact.phone;
+	document.querySelector('#' + contact.id + ' .link a').href = contact.link;
+	if (contact instanceof ContactPro)
+	{
+		document.querySelector('#' + contact.id + ' .link img').src = './images/logo_linkedin.png';
+		document.querySelector('#' + contact.id + ' .link img').alt = 'LinkedIn logo';
+	}
+	else
+	{
+		document.querySelector('#' + contact.id + ' .link img').src = './images/logo_facebook.png';
+		document.querySelector('#' + contact.id + ' .link img').alt = 'Facebook logo';
+	}
+
+	contact.is_active ? document.getElementById(contact.id).classList.add('active') : document.getElementById(contact.id).classList.add('inactive');
+
+	document.getElementById('btn_' + contact.id).addEventListener('click', function()
+	{
+		if (contact instanceof ContactPro)
+			ContactPro.present_contact(contact);
+		else
+			ContactPerso.present_contact(contact);
+	});
+}
+
 (function()
 {
-	
+	if (contacts.length != 0)
+	{
+		p_no_contact.classList.add('hidden');
+		contacts.forEach(e => display_contact(e));
+	}
 })();
 
 btn_add.addEventListener('click', function()
@@ -138,6 +176,7 @@ input_firstname.addEventListener('keyup', function(e)
 		{
 			document.getElementById(contacts[index].id).remove();
 			contacts.splice(index, 1);
+			localStorage.setItem('addressbook', JSON.stringify(contacts));
 			if (contacts.length == 0)
 			{
 				p_no_contact.classList.remove('hidden');
@@ -147,6 +186,7 @@ input_firstname.addEventListener('keyup', function(e)
 		else if (last_button == 'activate_deactivate')
 		{
 			contacts[index].is_active == true ? contacts[index].is_active = false : contacts[index].is_active = true;
+			localStorage.setItem('addressbook', JSON.stringify(contacts));
 			if (contacts[index].is_active == true)
 			{
 				document.getElementById(contacts[index].id).classList.add('active');
@@ -162,42 +202,6 @@ input_firstname.addEventListener('keyup', function(e)
 		last_button = '';
 	}
 });
-
-function display_contact(contact)
-{
-	let html_code = '<div id="' + contact.id + '">' + 
-		'<ul>' + 
-		'<li class="contact_field"><span class="fullname"></span></li>' + 
-		'<li class="contact_field"><i class="fas fa-envelope"></i><span class="email"></span></li>' + 
-		'<li class="contact_field"><i class="fas fa-phone-alt"></i><span class="phone"></span></li>' + 
-		'<li class="contact_field link"><img class="logo" src="" alt=""><a href="#" rel="ugc" target="_blank">See online account</a></li>' + 
-		'</ul>' + 
-		'<input type="button" value="Show presentation" id="btn_' + contact.id +'" name="btn_' + contact.id + '">' + 
-		'</div>';
-
-	div_contacts.insertAdjacentHTML('beforeend', html_code);
-	document.querySelector('#' + contact.id + ' .fullname').innerText = contact.lastname.toUpperCase() + ' ' + contact.firstname;
-	document.querySelector('#' + contact.id + ' .email').innerText = contact.email;
-	document.querySelector('#' + contact.id + ' .phone').innerText = contact.phone;
-	document.querySelector('#' + contact.id + ' .link a').href = contact.link;
-	if (contact instanceof ContactPro)
-	{
-		document.querySelector('#' + contact.id + ' .link img').src = './images/logo_linkedin.png';
-		document.querySelector('#' + contact.id + ' .link img').alt = 'LinkedIn logo';
-	}
-	else
-	{
-		document.querySelector('#' + contact.id + ' .link img').src = './images/logo_facebook.png';
-		document.querySelector('#' + contact.id + ' .link img').alt = 'Facebook logo';
-	}
-
-	contact.is_active ? document.getElementById(contact.id).classList.add('active') : document.getElementById(contact.id).classList.add('inactive');
-
-	document.getElementById('btn_' + contact.id).addEventListener('click', function()
-	{
-		contact.present_contact();
-	});
-}
 
 document.getElementById('option_pro').addEventListener('click', function()
 {
@@ -248,6 +252,7 @@ document.getElementById('btn_submit').addEventListener('click', function()
 		form_logo.src = './images/logo_linkedin.png';
 		form_logo.alt = 'LinkedIn logo';
 		contacts.push(new_contact);
+		localStorage.setItem('addressbook', JSON.stringify(contacts));
 		form_new_contact.classList.add('hidden');
 		display_contact(new_contact);
 		p_no_contact.classList.add('hidden');
