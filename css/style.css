@@ -16,6 +16,12 @@ input
 	margin-bottom: 2px;
 }
 
+input[type="button"], input[type="color"]
+{
+	background-color: #000;
+	color: #FFF;
+}
+
 h1, h2
 {
 	text-transform: uppercase;
@@ -83,16 +89,6 @@ ul
 	margin-top: 15px;
 }
 
-#div_task_interaction_first input
-{
-}
-
-#div_task_interaction_second input
-{	
-	background-color: #000;
-	color: #FFF;
-}
-
 /* ADDRESS BOOK ---------------------------------------------- */
 .active
 {
@@ -101,7 +97,7 @@ ul
 
 .inactive
 {
-	background-color: #9DA3A3;
+	background-color: rgba(157, 163, 163, 0.6);
 }
 
 #p_no_contact
