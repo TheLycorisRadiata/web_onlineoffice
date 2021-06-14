@@ -22,6 +22,11 @@ input[type="button"], input[type="color"]
 	color: #FFF;
 }
 
+input[type="button"], input[type="color"], input[type="radio"], input[type="checkbox"], #option_pro, label[for="contact_pro"], #option_perso, label[for="contact_perso"], #option_status, label[for="status"]
+{
+	cursor: pointer;
+}
+
 h1, h2
 {
 	text-transform: uppercase;
