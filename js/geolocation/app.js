@@ -10,7 +10,7 @@ display_user_position();
 
 btn_position_delete.addEventListener('click', function()
 {
-	if ((user_position = JSON.parse(localStorage.getItem('position'))) != null)
+	if (user_position)
 	{
 		user_position = null;
 		localStorage.removeItem('position');
@@ -26,7 +26,7 @@ btn_position_delete.addEventListener('click', function()
 /* Allow the user to ask for their position even if it's already known, because the user may go to another location, for instance with a laptop. */
 btn_position_locate.addEventListener('click', function()
 {
-	let options =
+	const options =
 	{
 		enableHighAccuracy: true,
 		timeout: 5000,
@@ -42,8 +42,7 @@ btn_position_locate.addEventListener('click', function()
 			accuracy: pos.coords.accuracy
 		}
 
-		user_position = position;
-		localStorage.setItem('position', JSON.stringify(user_position));
+		localStorage.setItem('position', JSON.stringify(user_position = position));
 		display_user_position();
 	}
 

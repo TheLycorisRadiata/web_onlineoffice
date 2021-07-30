@@ -12,7 +12,7 @@ const colors_default =
 	ongoing: '#7F0505'
 }
 
-const colors = style_from_local_storage != null ? style_from_local_storage : 
+const colors = style_from_local_storage ? style_from_local_storage : 
 {
 	text: colors_default.text,
 	background: colors_default.background,
@@ -40,7 +40,7 @@ btn_style_color_default.addEventListener('click', function()
 	document.body.style.color = colors.text;
 	document.body.style.backgroundColor = colors.background;
 
-	if (tasks_ongoing.length > 0)
+	if (tasks_ongoing.length)
 	{
 		for (let task of tasks_ongoing)
 		{
@@ -72,7 +72,7 @@ btn_style_color_ongoing.addEventListener('click', function(e)
 	const tasks_ongoing = document.getElementsByClassName('task_ongoing');
 	colors.ongoing = e.target.value;
 
-	if (tasks_ongoing.length > 0)
+	if (tasks_ongoing.length)
 	{
 		for (let task of tasks_ongoing)
 		{
