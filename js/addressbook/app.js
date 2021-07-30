@@ -18,7 +18,7 @@ const form_contact_perso = document.getElementById('contact_perso');
 const div_contacts = document.getElementById('div_contacts');
 
 const addressbook_from_local_storage = JSON.parse(localStorage.getItem('addressbook'));
-const contacts = addressbook_from_local_storage != null ? addressbook_from_local_storage : [];
+const contacts = addressbook_from_local_storage ? addressbook_from_local_storage : [];
 
 let last_button;
 
@@ -63,7 +63,7 @@ function display_contact(contact)
 
 (function()
 {
-	if (contacts.length != 0)
+	if (contacts.length)
 	{
 		p_no_contact.classList.add('hidden');
 		contacts.forEach(e => display_contact(e));
@@ -72,7 +72,7 @@ function display_contact(contact)
 
 btn_add.addEventListener('click', function()
 {
-	if (contacts.length == 0)
+	if (!contacts.length)
 		p_no_contact.classList.remove('hidden');
 	else
 		p_no_contact.classList.add('hidden');
@@ -80,7 +80,7 @@ btn_add.addEventListener('click', function()
 	input_lastname.classList.add('hidden');
 	input_firstname.classList.add('hidden');
 
-	if (last_button == 'add')
+	if (last_button === 'add')
 	{
 		form_new_contact.classList.add('hidden');
 		form_lastname.value = '';
@@ -107,9 +107,9 @@ btn_delete.addEventListener('click', function()
 {
 	form_new_contact.classList.add('hidden');
 
-	if (contacts.length > 0)
+	if (contacts.length)
 	{
-		if (last_button == 'delete')
+		if (last_button === 'delete')
 		{
 			input_lastname.classList.add('hidden');
 			input_firstname.classList.add('hidden');
@@ -132,12 +132,12 @@ btn_activate_deactivate.addEventListener('click', function()
 {
 	form_new_contact.classList.add('hidden');
 
-	if (contacts.length > 0)
+	if (contacts.length)
 	{
 		input_lastname.classList.remove('hidden');
 		input_firstname.classList.remove('hidden');
 	
-		if (last_button == 'activate_deactivate')
+		if (last_button === 'activate_deactivate')
 		{
 			input_lastname.classList.add('hidden');
 			input_firstname.classList.add('hidden');
@@ -160,34 +160,34 @@ input_firstname.addEventListener('keyup', function(e)
 {
 	let index;
 
-	if (input_lastname.value != '' && input_firstname.value != '' && e.key == 'Enter')
+	if (input_lastname.value !== '' && input_firstname.value !== '' && e.key === 'Enter')
 	{
 		input_lastname.classList.add('hidden');
 		input_firstname.classList.add('hidden');
-		index = contacts.findIndex(x => x.lastname.toLowerCase() == input_lastname.value.toLowerCase() && x.firstname.toLowerCase() == input_firstname.value.toLowerCase());
+		index = contacts.findIndex(x => x.lastname.toLowerCase() === input_lastname.value.toLowerCase() && x.firstname.toLowerCase() === input_firstname.value.toLowerCase());
 		input_lastname.value = '';
 		input_firstname.value = '';
 
-		if (index == -1)
+		if (index === -1)
 		{
 			alert('Contact not found.');
 		}
-		else if (last_button == 'delete')
+		else if (last_button === 'delete')
 		{
 			document.getElementById(contacts[index].id).remove();
 			contacts.splice(index, 1);
 			localStorage.setItem('addressbook', JSON.stringify(contacts));
-			if (contacts.length == 0)
+			if (!contacts.length)
 			{
 				p_no_contact.classList.remove('hidden');
 			}
 			alert('Contact deleted.');
 		}
-		else if (last_button == 'activate_deactivate')
+		else if (last_button === 'activate_deactivate')
 		{
-			contacts[index].is_active == true ? contacts[index].is_active = false : contacts[index].is_active = true;
+			contacts[index].is_active === true ? contacts[index].is_active = false : contacts[index].is_active = true;
 			localStorage.setItem('addressbook', JSON.stringify(contacts));
-			if (contacts[index].is_active == true)
+			if (contacts[index].is_active === true)
 			{
 				document.getElementById(contacts[index].id).classList.add('active');
 				document.getElementById(contacts[index].id).classList.remove('inactive');
@@ -230,12 +230,12 @@ document.getElementById('btn_submit').addEventListener('click', function()
 	let new_contact;
 
 	let type_of_contact = form_contact_pro;
-	if (type_of_contact.checked == false)
+	if (type_of_contact.checked === false)
 		type_of_contact = form_contact_perso;
 
-	if (form_lastname.value != '' && form_firstname.value != '' && form_email.value != '' && form_phone.value != '' && form_link.value != '')
+	if (form_lastname.value !== '' && form_firstname.value !== '' && form_email.value !== '' && form_phone.value !== '' && form_link.value !== '')
 	{
-		if (type_of_contact.value == 'contact_pro')
+		if (type_of_contact.value === 'contact_pro')
 			new_contact = new ContactPro(lastname, firstname, id, email, phone, is_active, link);
 		else
 			new_contact = new ContactPerso(lastname, firstname, id, email, phone, is_active, link);

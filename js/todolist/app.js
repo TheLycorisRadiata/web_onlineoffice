@@ -11,11 +11,11 @@ const input_task_modify = document.getElementById('input_task_modify');
 const btn_task_modify = document.getElementById('btn_task_modify');
 
 const todolist_from_local_storage = JSON.parse(localStorage.getItem('todolist'));
-const tasks = todolist_from_local_storage != null ? todolist_from_local_storage : [];
+const tasks = todolist_from_local_storage ? todolist_from_local_storage : [];
 
 (function()
 {
-	if (tasks.length == 0)
+	if (!tasks.length)
 		div_task_interaction.classList.add('hidden');
 	else
 	{
@@ -49,7 +49,7 @@ btn_task_create.addEventListener('click', function()
 		content: input_task.value
 	};
 
-	if (task.content != '')
+	if (task.content !== '')
 	{
 		div_tasks.insertAdjacentHTML('beforeend', '<li id="' + task.id  + '">' + task.content + '</li>');
 		tasks.push(task);
@@ -73,12 +73,12 @@ btn_task_mark_ongoing.addEventListener('click', function()
 	const task = tasks[input_number_task.value - 1];
 	let task_element;
 
-	if (task != null)
+	if (task)
 	{
 		task_element = document.getElementById(task.id);
 		task_element.style.textDecoration = 'none';
 
-		if (task.state == 'ongoing')
+		if (task.state === 'ongoing')
 		{
 			task.state = 'created';
 			task_element.classList.remove('task_ongoing');
@@ -105,7 +105,7 @@ btn_task_complete.addEventListener('click', function()
 	const task = tasks[input_number_task.value - 1];
 	let task_element;
 
-	if (task != null && task.state != 'completed')
+	if (task && task.state !== 'completed')
 	{
 		task.state = 'completed';
 		task_element = document.getElementById(task.id);
@@ -126,7 +126,7 @@ btn_task_delete.addEventListener('click', function()
 	const task = tasks[input_number_task.value - 1];
 	let task_element;
 
-	if (task != null)
+	if (task)
 	{
 		task_element = document.getElementById(task.id);
 		tasks.splice(input_number_task.value - 1, 1);
@@ -137,7 +137,7 @@ btn_task_delete.addEventListener('click', function()
 		input_number_task_modify.value = '';
 		input_task_modify.value = '';
 
-		if (tasks.length == 0)
+		if (!tasks.length)
 			div_task_interaction.classList.add('hidden');
 		else
 		{
@@ -155,7 +155,7 @@ btn_task_modify.addEventListener('click', function()
 	const task = tasks[input_number_task_modify.value - 1];
 	let task_element;
 
-	if (task != null && new_text != '')
+	if (task && new_text !== '')
 	{
 		task_element = document.getElementById(task.id);
 		task_element.innerText = new_text;
