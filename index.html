@@ -15,6 +15,8 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" 
 			integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" 
 			crossorigin="anonymous" referrerpolicy="no-referrer">
+		<!-- GOOGLE MAPS: POLYFILL (RETRO-COMPATIBILITY) -->
+		<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 	</head>
 	<body>
 		<h1>Online Office</h1>
@@ -122,11 +124,18 @@
 						<li id="geolocation_precision"></li>
 					</ul>
 
-					<iframe src="https://maps.google.com/maps?q=40.753181,-73.982254&z=17&output=embed" width="450" height="450"></iframe>
+					<div id="map">
+						<!-- GOOGLE MAPS: Where the map is inserted -->
+					</div>
 				</div>
 			</div>
 		</div>
 
+		<!-- GOOGLE MAPS: 
+		Async script executes immediately and must be after any DOM elements used in callback -->
+		<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDg8_MdfFT7JyROdc8IVT8sg6QlENpmQw0&callback=initialize_map&libraries=&v=weekly"></script>
+
+		<!-- CUSTOM SCRIPTS -->
 		<script src="./js/style/app.js"></script>
 		<script src="./js/todolist/app.js"></script>
 		<script src="./js/addressbook/Contact.js"></script>
