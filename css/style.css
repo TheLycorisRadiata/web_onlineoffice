@@ -72,7 +72,7 @@ ul
 	display: none;
 }
 
-.div_module, input, #div_contacts div[id*="ID"], iframe
+.div_module, input, #div_contacts div[id*="ID"], #map
 {
 	border-radius: 5px;
 }
