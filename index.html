@@ -1,147 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>Online Office</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+    <head>
+        <meta charset="utf-8">
+        <title>Online Office</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
 
-		<!-- GENERAL STYLE -->
-		<link rel="stylesheet" href="./css/style.css">
-		<!-- GOOGLE FONT: LATO (REGULAR 400) -->
-		<link rel="preconnect" href="https://fonts.gstatic.com">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato&display=swap">
-		<!-- FONT AWESOME: ICONS -->
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" 
-			integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" 
-			crossorigin="anonymous" referrerpolicy="no-referrer">
-		<!-- GOOGLE MAPS: POLYFILL (RETRO-COMPATIBILITY) -->
-		<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-	</head>
-	<body>
-		<h1>Online Office</h1>
+        <!-- GENERAL STYLE -->
+        <link rel="stylesheet" href="./css/style.css">
+        <!-- GOOGLE FONT: LATO (REGULAR 400) -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato&display=swap">
+        <!-- FONT AWESOME: ICONS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" 
+            integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" 
+            crossorigin="anonymous" referrerpolicy="no-referrer">
+        <!-- GOOGLE MAPS: POLYFILL (RETRO-COMPATIBILITY) -->
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    </head>
+    <body>
+        <h1>Online Office</h1>
 
-		<div id="main_wrapper">
-			<div class="div_module">
-				<h2>Style</h2>
+        <div id="main_wrapper">
+            <div class="div_module">
+                <h2>Style</h2>
 
-				<input id="btn_style_color_default" type="button" name="btn_style_color_default" value="Default Colors">
-				<p id="p_style_color_text">
-					<input id="btn_style_color_text" type="color" name="btn_style_color_text">
-					<span>Text Color</span>
-				</p>
+                <input id="btn_style_color_default" type="button" name="btn_style_color_default" value="Default Colors">
+                <p id="p_style_color_text">
+                    <input id="btn_style_color_text" type="color" name="btn_style_color_text">
+                    <span>Text Color</span>
+                </p>
 
-				<p id="p_style_color_background">
-					<input id="btn_style_color_background" type="color" name="btn_style_color_background">
-					<span>Background Color</span>
-				</p>
+                <p id="p_style_color_background">
+                    <input id="btn_style_color_background" type="color" name="btn_style_color_background">
+                    <span>Background Color</span>
+                </p>
 
-				<p id="p_style_color_ongoing">
-					<input id="btn_style_color_ongoing" type="color" name="btn_style_color_ongoing">
-					<span>Color For Ongoing Tasks</span>
-				</p>
-			</div>
+                <p id="p_style_color_ongoing">
+                    <input id="btn_style_color_ongoing" type="color" name="btn_style_color_ongoing">
+                    <span>Color For Ongoing Tasks</span>
+                </p>
+            </div>
 
-			<div class="div_module">
-				<h2>Todo List</h2>
+            <div class="div_module">
+                <h2>Todo List</h2>
 
-				<ol id="div_tasks">
-				</ol>
+                <ol id="div_tasks">
+                </ol>
 
-				<input id="input_task" type="text" name="input_task" placeholder="Type your task here">
-				<input id="btn_task_create" type="button" name="btn_task_create" value="Create Task">
+                <input id="input_task" type="text" name="input_task" placeholder="Type your task here">
+                <input id="btn_task_create" type="button" name="btn_task_create" value="Create Task">
 
-				<div id="div_task_interaction">
-					<input id="input_number_task" type="number" name="input_number_task" placeholder="1" min="1">
-					<input id="btn_task_mark_ongoing" type="button" name="btn_task_mark_ongoing" value="Mark Task As Ongoing">
-					<input id="btn_task_complete" type="button" name="btn_task_complete" value="Complete Task">
-					<input id="btn_task_delete" type="button" name="btn_task_delete" value="Delete Task">
-					<br>
-					<input id="input_number_task_modify" type="number" name="input_number_task_modify" placeholder="1" min="1">
-					<input id="input_task_modify" type="text" name="input_task_modify" placeholder="New text for the task">
-					<input id="btn_task_modify" type="button" name="btn_task_modify" value="Modify Task">
-				</div>
-			</div>
+                <div id="div_task_interaction">
+                    <input id="input_number_task" type="number" name="input_number_task" placeholder="1" min="1">
+                    <input id="btn_task_mark_ongoing" type="button" name="btn_task_mark_ongoing" value="Mark Task As Ongoing">
+                    <input id="btn_task_complete" type="button" name="btn_task_complete" value="Complete Task">
+                    <input id="btn_task_delete" type="button" name="btn_task_delete" value="Delete Task">
+                    <br>
+                    <input id="input_number_task_modify" type="number" name="input_number_task_modify" placeholder="1" min="1">
+                    <input id="input_task_modify" type="text" name="input_task_modify" placeholder="New text for the task">
+                    <input id="btn_task_modify" type="button" name="btn_task_modify" value="Modify Task">
+                </div>
+            </div>
 
-			<div class="div_module">
-				<h2>Address Book</h2>
+            <div class="div_module">
+                <h2>Address Book</h2>
 
-				<div id="div_addressbook_buttons">
-					<input id="btn_add" type="button" value="Add">
-					<input id="btn_delete" type="button" value="Delete">
-					<input id="btn_activate_deactivate" type="button" value="Activate/Deactivate">
-				</div>
+                <div id="div_addressbook_buttons">
+                    <input id="btn_add" type="button" value="Add">
+                    <input id="btn_delete" type="button" value="Delete">
+                    <input id="btn_activate_deactivate" type="button" value="Activate/Deactivate">
+                </div>
 
-				<p id="p_no_contact">No contact</p>
+                <p id="p_no_contact">No contact</p>
 
-				<input id="input_lastname" type="text" name="input_lastname" placeholder="Last name" class="hidden">
-				<input id="input_firstname" type="text" name="input_firstname" placeholder="First name" class="hidden">
+                <input id="input_lastname" type="text" name="input_lastname" placeholder="Last name" class="hidden">
+                <input id="input_firstname" type="text" name="input_firstname" placeholder="First name" class="hidden">
 
-				<form id="addressbook_form" class="hidden">
-					<input id="lastname" type="text" name="lastname" placeholder="Last name" required><br>
-					<input id="firstname" type="text" name="firstname" placeholder="First name" required><br>
-					<input id="email" type="email" name="email" placeholder="Email address" required><br>
-					<input id="phone" type="tel" name="phone" placeholder="Phone number" required><br>
+                <form id="addressbook_form" class="hidden">
+                    <input id="lastname" type="text" name="lastname" placeholder="Last name" required><br>
+                    <input id="firstname" type="text" name="firstname" placeholder="First name" required><br>
+                    <input id="email" type="email" name="email" placeholder="Email address" required><br>
+                    <input id="phone" type="tel" name="phone" placeholder="Phone number" required><br>
 
-					<span id="option_pro">
-						<input id="contact_pro" type="radio" name="type_of_contact" value="contact_pro" checked>
-						<label for="contact_pro">Professional contact</label>
-					</span>
-					<span> </span>
-					<span id="option_perso">
-						<input id="contact_perso" type="radio" name="type_of_contact" value="contact_perso">
-						<label for="contact_perso">Personal contact</label>
-					</span><br>
+                    <span id="option_pro">
+                        <input id="contact_pro" type="radio" name="type_of_contact" value="contact_pro" checked>
+                        <label for="contact_pro">Professional contact</label>
+                    </span>
+                    <span> </span>
+                    <span id="option_perso">
+                    <input id="contact_perso" type="radio" name="type_of_contact" value="contact_perso">
+                        <label for="contact_perso">Personal contact</label>
+                    </span><br>
 
-					<img id="form_logo" class="logo" src="./images/logo_linkedin.png" alt="LinkedIn logo">
-					<input id="link" type="url" name="link" placeholder="LinkedIn link" required><br>
+                    <img id="form_logo" class="logo" src="./images/logo_linkedin.png" alt="LinkedIn logo">
+                    <input id="link" type="url" name="link" placeholder="LinkedIn link" required><br>
 
-					<span id="option_status">
-						<input id="status" type="checkbox" name="status" checked>
-						<label for="status">Status: Active</label><br>
-					</span>
+                    <span id="option_status">
+                        <input id="status" type="checkbox" name="status" checked>
+                        <label for="status">Status: Active</label><br>
+                    </span>
 
-					<input id="btn_submit" type="button" name="btn_submit" value="Add contact">
-				</form>
+                    <input id="btn_submit" type="button" name="btn_submit" value="Add contact">
+                </form>
 
-				<div id="div_contacts">
-				</div>
-			</div>
+                <div id="div_contacts">
+                </div>
+            </div>
 
-			<div class="div_module">
-				<h2>Geolocation</h2>
+            <div class="div_module">
+                <h2>Geolocation</h2>
 
-				<div id="div_gelocation_buttons">
-					<input id="btn_position_locate" type="button" name="btn_position_locate" value="Locate Position">
-					<input id="btn_position_delete" type="button" name="btn_position_delete" value="Delete Position">
-				</div>
+                <div id="div_gelocation_buttons">
+                    <input id="btn_position_locate" type="button" name="btn_position_locate" value="Locate Position">
+                    <input id="btn_position_delete" type="button" name="btn_position_delete" value="Delete Position">
+                </div>
 
-				<div id="div_geolocation_display">
-					<ul>
-						<li>Your current position is...</li>
-						<li id="geolocation_latitude"></li>
-						<li id="geolocation_longitude"></li>
-						<li id="geolocation_precision"></li>
-					</ul>
+                <div id="div_geolocation_display">
+                    <ul>
+                        <li>Your current position is...</li>
+                        <li id="geolocation_latitude"></li>
+                        <li id="geolocation_longitude"></li>
+                        <li id="geolocation_precision"></li>
+                    </ul>
 
-					<div id="map">
-						<!-- GOOGLE MAPS: Where the map is inserted -->
-					</div>
-				</div>
-			</div>
-		</div>
+                    <div id="map">
+                        <!-- GOOGLE MAPS: Where the map is inserted -->
+                    </div>
+                </div>
+            </div>
+        </div>
 
-		<!-- GOOGLE MAPS: 
-		Async script executes immediately and must be after any DOM elements used in callback -->
-		<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDg8_MdfFT7JyROdc8IVT8sg6QlENpmQw0&callback=initialize_map&libraries=&v=weekly"></script>
+        <!-- GOOGLE MAPS: 
+        Async script executes immediately and must be after any DOM elements used in callback -->
+        <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDg8_MdfFT7JyROdc8IVT8sg6QlENpmQw0&callback=initialize_map&libraries=&v=weekly"></script>
 
-		<!-- CUSTOM SCRIPTS -->
-		<script src="./js/style/app.js"></script>
-		<script src="./js/todolist/app.js"></script>
-		<script src="./js/addressbook/Contact.js"></script>
-		<script src="./js/addressbook/app.js"></script>
-		<script src="./js/geolocation/functions.js"></script>
-		<script src="./js/geolocation/app.js"></script>
-	</body>
+        <!-- CUSTOM SCRIPTS -->
+        <script src="./js/style/app.js"></script>
+        <script src="./js/todolist/app.js"></script>
+        <script src="./js/addressbook/Contact.js"></script>
+        <script src="./js/addressbook/app.js"></script>
+        <script src="./js/geolocation/functions.js"></script>
+        <script src="./js/geolocation/app.js"></script>
+    </body>
 </html>
 

@@ -15,157 +15,157 @@ const tasks = todolist_from_local_storage ? todolist_from_local_storage : [];
 
 (function()
 {
-	if (!tasks.length)
-		div_task_interaction.classList.add('hidden');
-	else
-	{
-		input_number_task.max = tasks.length;
-		input_number_task_modify.max = tasks.length;
+    if (!tasks.length)
+        div_task_interaction.classList.add('hidden');
+    else
+    {
+        input_number_task.max = tasks.length;
+        input_number_task_modify.max = tasks.length;
 
-		for (const task of tasks)
-		{
-			div_tasks.insertAdjacentHTML('beforeend', '<li id="' + task.id  + '">' + task.content + '</li>');
+        for (const task of tasks)
+        {
+            div_tasks.insertAdjacentHTML('beforeend', '<li id="' + task.id  + '">' + task.content + '</li>');
 
-			switch(task.state)
-			{
-				case 'ongoing':
-					document.getElementById(task.id).classList.add('task_ongoing');
-					document.getElementById(task.id).style.color = colors.ongoing;
-					break;
-				case 'completed':
-					document.getElementById(task.id).style.color = 'initial';
-					document.getElementById(task.id).style.textDecoration = 'line-through';
-			}
-		}
-	}
+            switch(task.state)
+            {
+                case 'ongoing':
+                    document.getElementById(task.id).classList.add('task_ongoing');
+                    document.getElementById(task.id).style.color = colors.ongoing;
+                    break;
+                case 'completed':
+                    document.getElementById(task.id).style.color = 'initial';
+                    document.getElementById(task.id).style.textDecoration = 'line-through';
+            }
+        }
+    }
 })();
 
 btn_task_create.addEventListener('click', function()
 {
-	const task = 
-	{
-		id: 'ID' + Date.now(),
-		state: 'created', /* created - ongoing - completed */
-		content: input_task.value
-	};
+    const task = 
+    {
+        id: 'ID' + Date.now(),
+        state: 'created', /* created - ongoing - completed */
+        content: input_task.value
+    };
 
-	if (task.content !== '')
-	{
-		div_tasks.insertAdjacentHTML('beforeend', '<li id="' + task.id  + '">' + task.content + '</li>');
-		tasks.push(task);
+    if (task.content !== '')
+    {
+        div_tasks.insertAdjacentHTML('beforeend', '<li id="' + task.id  + '">' + task.content + '</li>');
+        tasks.push(task);
 
-		input_task.value = '';
-		input_number_task.value = '';
-		input_number_task_modify.value = '';
-		input_task_modify.value = '';
+        input_task.value = '';
+        input_number_task.value = '';
+        input_number_task_modify.value = '';
+        input_task_modify.value = '';
 
-		input_number_task.max = tasks.length;
-		input_number_task_modify.max = tasks.length;
+        input_number_task.max = tasks.length;
+        input_number_task_modify.max = tasks.length;
 
-		div_task_interaction.classList.remove('hidden');
+        div_task_interaction.classList.remove('hidden');
 
-		localStorage.setItem('todolist', JSON.stringify(tasks));
-	}
+        localStorage.setItem('todolist', JSON.stringify(tasks));
+    }
 });
 
 btn_task_mark_ongoing.addEventListener('click', function()
 {
-	const task = tasks[input_number_task.value - 1];
-	let task_element;
+    const task = tasks[input_number_task.value - 1];
+    let task_element;
 
-	if (task)
-	{
-		task_element = document.getElementById(task.id);
-		task_element.style.textDecoration = 'none';
+    if (task)
+    {
+        task_element = document.getElementById(task.id);
+        task_element.style.textDecoration = 'none';
 
-		if (task.state === 'ongoing')
-		{
-			task.state = 'created';
-			task_element.classList.remove('task_ongoing');
-			task_element.style.color = colors.text;
-		}
-		else
-		{
-			task.state = 'ongoing';
-			task_element.classList.add('task_ongoing');
-			task_element.style.color = colors.ongoing;
-		}
+        if (task.state === 'ongoing')
+        {
+            task.state = 'created';
+            task_element.classList.remove('task_ongoing');
+            task_element.style.color = colors.text;
+        }
+        else
+        {
+            task.state = 'ongoing';
+            task_element.classList.add('task_ongoing');
+            task_element.style.color = colors.ongoing;
+        }
 
-		input_task.value = '';
-		input_number_task.value = '';
-		input_number_task_modify.value = '';
-		input_task_modify.value = '';
+        input_task.value = '';
+        input_number_task.value = '';
+        input_number_task_modify.value = '';
+        input_task_modify.value = '';
 
-		localStorage.setItem('todolist', JSON.stringify(tasks));
-	}
+        localStorage.setItem('todolist', JSON.stringify(tasks));
+    }
 });
 
 btn_task_complete.addEventListener('click', function()
 {
-	const task = tasks[input_number_task.value - 1];
-	let task_element;
+    const task = tasks[input_number_task.value - 1];
+    let task_element;
 
-	if (task && task.state !== 'completed')
-	{
-		task.state = 'completed';
-		task_element = document.getElementById(task.id);
-		task_element.style.color = 'initial';
-		task_element.style.textDecoration = 'line-through';
+    if (task && task.state !== 'completed')
+    {
+        task.state = 'completed';
+        task_element = document.getElementById(task.id);
+        task_element.style.color = 'initial';
+        task_element.style.textDecoration = 'line-through';
 
-		input_task.value = '';
-		input_number_task.value = '';
-		input_number_task_modify.value = '';
-		input_task_modify.value = '';
+        input_task.value = '';
+        input_number_task.value = '';
+        input_number_task_modify.value = '';
+        input_task_modify.value = '';
 
-		localStorage.setItem('todolist', JSON.stringify(tasks));
-	}
+        localStorage.setItem('todolist', JSON.stringify(tasks));
+    }
 });
 
 btn_task_delete.addEventListener('click', function()
 {
-	const task = tasks[input_number_task.value - 1];
-	let task_element;
+    const task = tasks[input_number_task.value - 1];
+    let task_element;
 
-	if (task)
-	{
-		task_element = document.getElementById(task.id);
-		tasks.splice(input_number_task.value - 1, 1);
-		task_element.remove();
+    if (task)
+    {
+        task_element = document.getElementById(task.id);
+        tasks.splice(input_number_task.value - 1, 1);
+        task_element.remove();
 
-		input_task.value = '';
-		input_number_task.value = '';
-		input_number_task_modify.value = '';
-		input_task_modify.value = '';
+        input_task.value = '';
+        input_number_task.value = '';
+        input_number_task_modify.value = '';
+        input_task_modify.value = '';
 
-		if (!tasks.length)
-			div_task_interaction.classList.add('hidden');
-		else
-		{
-			input_number_task.max = tasks.length;
-			input_number_task_modify.max = tasks.length;
-		}
+        if (!tasks.length)
+            div_task_interaction.classList.add('hidden');
+        else
+        {
+            input_number_task.max = tasks.length;
+            input_number_task_modify.max = tasks.length;
+        }
 
-		localStorage.setItem('todolist', JSON.stringify(tasks));
-	}
+        localStorage.setItem('todolist', JSON.stringify(tasks));
+    }
 });
 
 btn_task_modify.addEventListener('click', function()
 {
-	const new_text = input_task_modify.value;
-	const task = tasks[input_number_task_modify.value - 1];
-	let task_element;
+    const new_text = input_task_modify.value;
+    const task = tasks[input_number_task_modify.value - 1];
+    let task_element;
 
-	if (task && new_text !== '')
-	{
-		task_element = document.getElementById(task.id);
-		task_element.innerText = new_text;
+    if (task && new_text !== '')
+    {
+        task_element = document.getElementById(task.id);
+        task_element.innerText = new_text;
 
-		input_task.value = '';
-		input_number_task.value = '';
-		input_number_task_modify.value = '';
-		input_task_modify.value = '';
+        input_task.value = '';
+        input_number_task.value = '';
+        input_number_task_modify.value = '';
+        input_task_modify.value = '';
 
-		localStorage.setItem('todolist', JSON.stringify(tasks));
-	}
+        localStorage.setItem('todolist', JSON.stringify(tasks));
+    }
 });
 
