@@ -1,173 +1,173 @@
 body
 {
-	word-break: break-word;
-	margin-bottom: 20px;
+    word-break: break-word;
+    margin-bottom: 20px;
 }
 
 body, input
 {
-	font-size: 1.2rem;
-	font-family: 'Lato', sans-serif;
+    font-size: 1.2rem;
+    font-family: 'Lato', sans-serif;
 }
 
 input
 {
-	margin-right: 5px;
-	margin-bottom: 2px;
+    margin-right: 5px;
+    margin-bottom: 2px;
 }
 
 input[type="button"], input[type="color"]
 {
-	background-color: #000;
-	color: #FFF;
+    background-color: #000;
+    color: #FFF;
 }
 
 input[type="button"], input[type="color"], input[type="radio"], input[type="checkbox"], #option_pro, label[for="contact_pro"], #option_perso, label[for="contact_perso"], #option_status, label[for="status"]
 {
-	cursor: pointer;
+    cursor: pointer;
 }
 
 h1, h2
 {
-	text-transform: uppercase;
+    text-transform: uppercase;
 }
 
 h1
 {
-	font-size: 2rem;
-	text-align: center;
-	text-shadow: 4px 4px 5px white;
+    font-size: 2rem;
+    text-align: center;
+    text-shadow: 4px 4px 5px white;
 }
 
 h2
 {
-	font-size: 1.7rem;
-	margin-top: 0;
+    font-size: 1.7rem;
+    margin-top: 0;
 }
 
 ul
 {
-	list-style-type: none;
-	padding: 0px;
+    list-style-type: none;
+    padding: 0px;
 }
 
 #main_wrapper
 {
-	width: 90%;
-	margin: auto;
-	display: flex;
-	flex-wrap: wrap;
-	align-items: flex-start;
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
 }
 
 .div_module
 {
-	box-shadow: inset 0px 0px 10px #000;
-	margin: 10px;
-	padding: 10px;
+    box-shadow: inset 0px 0px 10px #000;
+    margin: 10px;
+    padding: 10px;
 }
 
 .hidden
 {
-	display: none;
+    display: none;
 }
 
 .div_module, input, #div_contacts div[id*="ID"], #map
 {
-	border-radius: 5px;
+    border-radius: 5px;
 }
 
 /* SCROLL BAR ------------------------------------------------ */
 ::-webkit-scrollbar
 {
-	width: 12px;
-	background-color: #141426;
+    width: 12px;
+    background-color: #141426;
 }
 
 ::-webkit-scrollbar-track
 {
-	box-shadow: inset 2px 2px 3px #141426, inset -2px -2px 3px #141426;
-	background-color: rgba(157, 163, 163, 0.6);
-	border-radius: 10px;
+    box-shadow: inset 2px 2px 3px #141426, inset -2px -2px 3px #141426;
+    background-color: rgba(157, 163, 163, 0.6);
+    border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb
 {
-	background-color: #000;
-	border-radius: 10px;
-	box-shadow: inset 2px 2px 3px #FFF;
+    background-color: #000;
+    border-radius: 10px;
+    box-shadow: inset 2px 2px 3px #FFF;
 }
 
 /* STYLE MODULE ---------------------------------------------- */
 #p_style_color_text span, #p_style_color_background span, #p_style_color_ongoing span
 {
-	margin-left: 10px;
+    margin-left: 10px;
 }
 
 #p_style_color_text, #p_style_color_background, #p_style_color_ongoing
 {
-	margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 /* TODO LIST ------------------------------------------------- */
 #div_task_interaction
 {
-	margin-top: 15px;
+    margin-top: 15px;
 }
 
 /* ADDRESS BOOK ---------------------------------------------- */
 .active
 {
-	background-color: initial;
+    background-color: initial;
 }
 
 .inactive
 {
-	background-color: rgba(157, 163, 163, 0.6);
+    background-color: rgba(157, 163, 163, 0.6);
 }
 
 #p_no_contact
 {
-	margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 #addressbook_form
 {
-	margin-top: 20px;
+    margin-top: 20px;
 }
 
 .logo
 {
-	width: 50px;
-	height: 50px;
+    width: 50px;
+    height: 50px;
 }
 
 .logo, .fas
 {
-	margin-right: 10px;
+    margin-right: 10px;
 }
 
 .contact_field
 {
-	margin-bottom: 5px;
+    margin-bottom: 5px;
 }
 
 #div_contacts div[id*="ID"]
 {
-	padding: 5px;
-	padding-top: 0;
+    padding: 5px;
+    padding-top: 0;
 }
 
 /* GEOLOCATION ----------------------------------------------- */
 #div_geolocation_display ul
 {
-	margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 #map
 {
-	margin-top: 25px;
-	height: 450px;
-	width: 450px;
+    margin-top: 25px;
+    height: 450px;
+    width: 450px;
 }
 
