@@ -1,13 +1,4 @@
-let map, latitude, longitude;
-
-function initialize_map()
-{
-    map = new google.maps.Map(document.getElementById("map"),
-    {
-        center: { lat: latitude, lng: longitude },
-        zoom: 17,
-    });
-}
+let latitude, longitude;
 
 function display_user_position()
 {
@@ -19,7 +10,6 @@ function display_user_position()
 
         latitude = 40.753181;
         longitude = -73.982254;
-        initialize_map();
     }
     else
     {
@@ -29,7 +19,6 @@ function display_user_position()
 
         latitude = user_position.latitude;
         longitude = user_position.longitude;
-        initialize_map();
     }
 }
 

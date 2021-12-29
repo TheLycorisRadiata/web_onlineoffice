@@ -158,16 +158,3 @@ ul
     padding-top: 0;
 }
 
-/* GEOLOCATION ----------------------------------------------- */
-#div_geolocation_display ul
-{
-    margin-bottom: 0;
-}
-
-#map
-{
-    margin-top: 25px;
-    height: 450px;
-    width: 450px;
-}
-
