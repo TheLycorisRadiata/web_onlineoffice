@@ -1,6 +1,10 @@
 # Online Office
 
-This is a vanilla JavaScript project from the bootcamp, or more like, several vanilla JS projects merged into one.  
-There is a todo list, an address book, geolocation, and the possibility to change the app's colors.  
+**Project type:** Front-end web project.  
+**Brief description:** Web application containing a todo list, an address book, geolocation, as well as a "style" module allowing to change the app's colors.  
+**Technologies:** HTML5, CSS3, JavaScript.  
 
-I've finished it after the bootcamp but kept the original feel. Also, after the bootcamp, I've dabbled into Google Maps a little bit to add it to the geolocation module, and I've forgotten about the idea since it costs money **not** to have it make the app lag.
+This is a vanilla JavaScript project from the bootcamp, or more like, several vanilla JS projects merged into one. The different modules of Online Office are laid out in an automatic manner thanks to the flexbox, offering a reponsive display. Additionally, even though this is a front-end application, data persists even after the page is refreshed or closed thanks to the localstorage.
+
+![](./screenshot.png)
+
